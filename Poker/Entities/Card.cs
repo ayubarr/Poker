@@ -22,7 +22,7 @@ namespace Poker.Models
             string rank = RankCheck(card);
             string suit = SuitCheck(card);
           
-            Console.WriteLine($"[{rank}{suit}]");
+            Console.Write($"[{rank}{suit}] ");
          
         }
         public string RankCheck(Card card)

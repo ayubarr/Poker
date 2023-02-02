@@ -10,8 +10,8 @@ namespace Poker.Entities
 {
     public class Deck
     {
-        public HashSet<Card> deck { get; set; }
-
+        public HashSet<Card> deck = new HashSet<Card>();
+             
         public void CreateDeck()
         {
             int ranksQuantity = EnumHelper<int>.GetEnumQuantity(typeof(Ranks));
@@ -22,7 +22,7 @@ namespace Poker.Entities
                 {
                     Card card = new Card();
                     card.Rank = EnumHelper<Ranks>.GetRanksByIndex(i);
-                    card.Suit = EnumHelper<Suits>.GetRanksByIndex(i);
+                    card.Suit = EnumHelper<Suits>.GetRanksByIndex(j);
                     deck.Add(card);
                 }
             }

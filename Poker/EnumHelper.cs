@@ -24,5 +24,6 @@ namespace Poker
                 T card = (T)Enum.GetValues(typeof(T)).GetValue(enumIndex);
                 return card;
         }
+     
     }
 }
