@@ -3,6 +3,7 @@ using Poker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ObjectiveC;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace Poker.Entities
     public class Deck
     {
         public HashSet<Card> deck = new HashSet<Card>();
-             
+        public Card[] arrayDeck = {};
         public void CreateDeck()
         {
             int ranksQuantity = EnumHelper<int>.GetEnumQuantity(typeof(Ranks));
@@ -28,12 +29,10 @@ namespace Poker.Entities
             }
         }
 
-  
-        public void DrawCard(Card card)
+
+        public void DrawDeck()
         {
 
         }
-
-
     }
 }

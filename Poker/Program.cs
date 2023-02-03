@@ -13,3 +13,4 @@ foreach (Card card in deck1.deck)
 {
     card.ViewCard(card);
 }
+deck1.DrawDeck();
