@@ -13,4 +13,13 @@ foreach (Card card in deck1.deck)
 {
     card.ViewCard(card);
 }
-deck1.DrawDeck();
+Console.WriteLine("Напишите 1 чтобы перемешать");
+string enter = Console.ReadLine();
+if(enter == "1")
+{
+    deck1.ShuffleDeck();
+    foreach (Card card in deck1.deck)
+    {
+        card.ViewCard(card);
+    }
+}

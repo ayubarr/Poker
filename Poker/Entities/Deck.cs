@@ -11,7 +11,7 @@ namespace Poker.Entities
 {
     public class Deck
     {
-        public HashSet<Card> deck = new HashSet<Card>();
+        public List<Card> deck = new List<Card>();
         public Card[] arrayDeck = {};
         public void CreateDeck()
         {
@@ -28,11 +28,37 @@ namespace Poker.Entities
                 }
             }
         }
-
-
-        public void DrawDeck()
+        public List<Card> ShuffleDeck()
         {
-
+           List<Card> newList = new List<Card>();
+           List<Card> oldList = deck.ToList();
+           while(oldList.Count > 0)
+           {
+                int rnd = new Random().Next(0, oldList.Count -1);
+                newList.Add(oldList[rnd]);
+                oldList.RemoveAt(rnd);
+           }
+            if (CheckDeck(newList)) return newList;
+            else return null;
+        }
+        public bool CheckDeck(List<Card> newList)
+        {
+            HashSet<Card> hashSetDeck = newList.ToHashSet();
+            if (deck.Count == hashSetDeck.Count)
+            {
+                deck.Clear();
+                AddNewDeckListElements(newList);
+                return true;
+            }
+            return false;
+        }
+        public void AddNewDeckListElements(List<Card> newList)
+        {
+            deck.AddRange(newList);
+            //foreach (Card card in newList)
+            //{
+            //    deck.Add(card);
+            //}
         }
     }
 }
