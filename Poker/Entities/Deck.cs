@@ -1,4 +1,5 @@
-﻿using Poker.Enums;
+﻿using Poker.Controllers;
+using Poker.Enums;
 using Poker.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Poker.Entities
 {
     public class Deck
     {
-        public List<Card> deck = new List<Card>();
+        public List<Card> deckList = new List<Card>();
         public Card[] arrayDeck = {};
         public void CreateDeck()
         {
@@ -24,17 +25,17 @@ namespace Poker.Entities
                     Card card = new Card();
                     card.Rank = EnumHelper<Ranks>.GetRanksByIndex(i);
                     card.Suit = EnumHelper<Suits>.GetRanksByIndex(j);
-                    deck.Add(card);
+                    deckList.Add(card);
                 }
             }
         }
         public List<Card> ShuffleDeck()
         {
            List<Card> newList = new List<Card>();
-           List<Card> oldList = deck.ToList();
+           List<Card> oldList = deckList.ToList();
            while(oldList.Count > 0)
            {
-                int rnd = new Random().Next(0, oldList.Count -1);
+                int rnd = new Random().Next(0, oldList.Count);
                 newList.Add(oldList[rnd]);
                 oldList.RemoveAt(rnd);
            }
@@ -44,9 +45,9 @@ namespace Poker.Entities
         public bool CheckDeck(List<Card> newList)
         {
             HashSet<Card> hashSetDeck = newList.ToHashSet();
-            if (deck.Count == hashSetDeck.Count)
+            if (deckList.Count == hashSetDeck.Count)
             {
-                deck.Clear();
+                deckList.Clear();
                 AddNewDeckListElements(newList);
                 return true;
             }
@@ -54,11 +55,7 @@ namespace Poker.Entities
         }
         public void AddNewDeckListElements(List<Card> newList)
         {
-            deck.AddRange(newList);
-            //foreach (Card card in newList)
-            //{
-            //    deck.Add(card);
-            //}
+            deckList.AddRange(newList);
         }
     }
 }

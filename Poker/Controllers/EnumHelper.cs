@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poker
+namespace Poker.Controllers
 {
     public static class EnumHelper<T>
     {
-        public static int GetEnumQuantity(Type enumType )
+        public static int GetEnumQuantity(Type enumType)
         {
             int number = GetIntFromEnums(enumType);
             return number;
@@ -20,10 +20,10 @@ namespace Poker
             return enumValues.Length;
         }
         public static T GetRanksByIndex(int enumIndex)
-        {   
-                T card = (T)Enum.GetValues(typeof(T)).GetValue(enumIndex);
-                return card;
+        {
+            T card = (T)Enum.GetValues(typeof(T)).GetValue(enumIndex);
+            return card;
         }
-     
+
     }
 }
